@@ -1,0 +1,19 @@
+<!-- templates/upload.html -->
+
+<h1>Upload File</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+</form>
+
+<h2>Uploaded Files</h2>
+<ul>
+{% for file in files %}
+    <li>{{ file.file.name }}
+        <br>
+        <a href="{{ file.file.url }}">Download</a></li>
+{% endfor %}
+</ul>
+
